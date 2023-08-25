@@ -1,15 +1,13 @@
 package com.eventoapp.eventoapp.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
-public class IndexController {
+public class EventoController {
 
-	@RequestMapping("/index")
-	public String index() {
-		return "index";
+	@RequestMapping("/cadastraEvento")
+	public String form() {
+		return "evento/formEvento";
 	}
 }
