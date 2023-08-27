@@ -1,4 +1,21 @@
 <!DOCTYPE html>
-<html>
-	<body>Ola mundo com Spring</body>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      <head>
+		  <title>EventosApp</title>
+	  </head>
+	<body>
+		<h1>Lista de Eventos</h1>
+		<h3><a href="/cadastraEvento">Cadastra Eventos</a></h3>
+		
+		<div th:each="evento : ${eventos}">
+			<div class="row">
+				<p><spam th:text="${evento.nome}"></spam></p>
+				<p><spam th:text="${evento.local}"></spam></p>
+				<p><spam th:text="${evento.data}"></spam></p>
+				<p><spam th:text="${evento.horario}"></spam></p>
+			</div>
+		</div>
+		
+	</body>
 </html>
