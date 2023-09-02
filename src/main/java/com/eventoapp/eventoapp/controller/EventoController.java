@@ -1,5 +1,7 @@
 package com.eventoapp.eventoapp.controller;
 
+import javax.swing.JOptionPane;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,15 @@ public class EventoController {
 	
 	@RequestMapping(value="/cadastraEvento", method=RequestMethod.POST)
 	public String form(Evento evento) {	
-		er.save(evento);
+		if(evento.getNome().isEmpty()
+				|| evento.getLocal().isEmpty()
+				|| evento.getData().isEmpty()
+				|| evento.getHorario().isEmpty()) {
+			
+		}else {
+			er.save(evento);
+		}
+		
 		return "redirect:/cadastraEvento";
 	}
 	
