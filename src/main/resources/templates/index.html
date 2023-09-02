@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-      <head>
-		  <title>EventosApp</title>
-	  </head>
-	<body>
-		<h1>Lista de Eventos</h1>
-		<h3><a href="/cadastraEvento">Cadastra Eventos</a></h3>
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<title>EventosApp</title>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+	<h1>Lista de Eventos</h1>
+	<h3><a href="/cadastraEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastra Eventos</a></h3>
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Local</th>
+				<th>Data</th>
+				<th>Horario</th>
+			</tr>
+		</thead>
+		<tbody>
+	        <tr th:each="evento : ${eventos}">
+				<td><spam th:text="${evento.nome}"></spam></td>
+				<td><spam th:text="${evento.local}"></spam></td>
+				<td><spam th:text="${evento.data}"></spam></td>
+				<td><spam th:text="${evento.horario}"></spam></td>
+		    </tr>
+		</tbody> 
 		
-		<div th:each="evento : ${eventos}">
-			<div class="row">
-				<p><spam th:text="${evento.nome}"></spam></p>
-				<p><spam th:text="${evento.local}"></spam></p>
-				<p><spam th:text="${evento.data}"></spam></p>
-				<p><spam th:text="${evento.horario}"></spam></p>
-			</div>
-		</div>
-		
-	</body>
+		</table>
+		 
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
 </html>
