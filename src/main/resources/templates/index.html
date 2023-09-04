@@ -26,7 +26,7 @@
 		</thead>
 		<tbody>
 	        <tr th:each="evento : ${eventos}">
-				<td><spam th:text="${evento.nome}"></spam></td>
+				<td><a th:href="${(#mvc.url('EC#detalhesEventos').arg(0,evento.codigo)).build()}"><spam th:text="${evento.nome}"></spam></a></td>
 				<td><spam th:text="${evento.local}"></spam></td>
 				<td><spam th:text="${evento.data}"></spam></td>
 				<td><spam th:text="${evento.horario}"></spam></td>
