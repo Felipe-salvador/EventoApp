@@ -13,7 +13,7 @@ public class Convidado {
 	
 	@ManyToOne
 	private Evento evento;
-	
+
 	public String getRg() {
 		return rg;
 	}
