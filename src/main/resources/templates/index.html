@@ -34,6 +34,7 @@
 				<th>Local</th>
 				<th>Data</th>
 				<th>Horario</th>
+				<th>Deletar</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -42,6 +43,7 @@
 				<td><spam th:text="${evento.local}"></spam></td>
 				<td><spam th:text="${evento.data}"></spam></td>
 				<td><spam th:text="${evento.horario}"></spam></td>
+				<td><a class="waves-effect waves-light btn-Small" th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"><i class="material-icons left">delete</i></a></td>
 		    </tr>
 		</tbody> 
 		
