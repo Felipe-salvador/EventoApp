@@ -7,26 +7,41 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
-public class Login implements Serializable{
+public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotEmpty
-	private String usuario;
-	@NotEmpty
+	
+	@Email
+	private String email;
+	private String user;
 	private String senha;
 	
 	
-	public String getUsuario() {
-		return usuario;
+	
+	public Long getId() {
+		return id;
 	}
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
 	}
 	public String getSenha() {
 		return senha;
