@@ -25,7 +25,6 @@ public class UsuarioController {
 	@RequestMapping("/")
 	public String login() {
 		return "Login/login";
-
 	}
 
 	@RequestMapping(value="/cadastrarUsuario", method=RequestMethod.GET)
@@ -42,7 +41,7 @@ public class UsuarioController {
 		}
 		ER.save(usuario);
 		attributes.addFlashAttribute("mensagem", "Cadastro realizado com sucesso!");
-		return "redirect:/cadastrarUsuario";
+		return "redirect:/";
 	}
 	
 }
