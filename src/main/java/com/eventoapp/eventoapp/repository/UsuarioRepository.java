@@ -4,5 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.eventoapp.eventoapp.models.Usuario;
 
-public interface UsuarioRepository extends CrudRepository<Usuario, String>{
+public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
+	
 }
