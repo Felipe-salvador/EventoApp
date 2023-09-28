@@ -9,7 +9,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eventoapp.eventoapp.models.Usuario;
 import com.eventoapp.eventoapp.repository.UsuarioRepository;
-import com.eventoapp.util.PasswordUtil;
 
 import jakarta.validation.Valid;
 
@@ -18,12 +17,7 @@ import jakarta.validation.Valid;
 public class UsuarioController {
 	
 	@Autowired
-	private UsuarioRepository usuarioRepositorio;
-
-	@RequestMapping("/")
-	public String login() {
-		return "Login/login";
-	}
+	private UsuarioRepository ur;
 
 	@RequestMapping(value="/cadastrarUsuario", method=RequestMethod.GET)
 	public String cadastrar() {
@@ -32,18 +26,20 @@ public class UsuarioController {
 	
 	
 	@RequestMapping(value="/cadastrarUsuario", method=RequestMethod.POST)
-	public String cadastra(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) throws Exception {
+	public String cadastra(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
 		
-		String hashSenha = PasswordUtil.encoder(usuario.getSenha());
-		usuario.setSenha(hashSenha);
+		//String hashSenha = PasswordUtil.encoder(usuario.getSenha());
+		//usuario.setSenha(hashSenha);
 		
 		if(result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
 			return "redirect:/cadastrarUsuario";
 		}
-		usuarioRepositorio.save(usuario);
+		ur.save(usuario);
 		attributes.addFlashAttribute("mensagemOK", "Cadastro realizado com sucesso!");
-		return "redirect:/";
+		return "Login/login";
 	}
 	
+
+
 }
