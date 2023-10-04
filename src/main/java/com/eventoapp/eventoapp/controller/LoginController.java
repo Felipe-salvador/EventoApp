@@ -11,7 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eventoapp.Exceptions.ServiceExc;
+import com.eventoapp.eventoapp.ServiceUsuario;
 import com.eventoapp.eventoapp.models.Usuario;
+import com.eventoapp.util.PasswordUtil;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -36,6 +38,7 @@ public class LoginController {
 		return mv;
 	}
 	
+
 	@PostMapping("/logar")
 	public ModelAndView logar(@Valid Usuario usuario,  BindingResult result, HttpSession session, RedirectAttributes attributes) throws NoSuchAlgorithmException, ServiceExc {
 		ModelAndView mv = new ModelAndView();
@@ -44,15 +47,16 @@ public class LoginController {
 			mv.setViewName("redirect:/");
 		}	
 		
-		Usuario userLogin = su.loginUser(usuario.getUser(), usuario.getSenha());
-		if(userLogin == null) {
-			attributes.addFlashAttribute("mensagem", "Usuario não encontrado. tente novamente");
-			mv.setViewName("redirect:/");
-		}else {
+		Usuario userLogin = su.loginUser(usuario.getUser(), PasswordUtil.md5(usuario.getSenha()));
+		if(userLogin != null) {
 			session.setAttribute("usuarioLogado", userLogin);
 			return index();
+		}else {
+			attributes.addFlashAttribute("mensagem", "Usuario não encontrado. tente novamente");
+			mv.setViewName("redirect:/");
 		}
 		
 		return mv;
 	}
+
 }

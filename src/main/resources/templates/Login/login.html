@@ -29,15 +29,15 @@
 						<input type="text" class="form-control" name="user" placeholder="username">
 					</div>
 					<div class="form-group">
-						<input type="text"  class="form-control" name="senha" placeholder="password">
-					</div>
-					
-					<div class="cadastro">
-						<a th:href="@{cadastrarUsuario}">Não tem cadastro? clique aqui.</a>
+						<input type="password"  class="form-control" name="senha" placeholder="password">
 					</div>
 					
 					<th:block th:include="mensagemValidacao"></th:block></a>
 					
+					<div class="cadastro">
+						<a th:href="@{cadastrarUsuario}">Não tem cadastro? clique aqui.</a>
+					</div>
+				
 					<button type="submit" class="btn btn-primary">Login</button>
 					<button type="button" class="btn btn-info">Voltar</button>
 				
